@@ -1354,21 +1354,35 @@
                             const visaDetails = showVisaDetails(collectedData.tipo);
                             if (visaDetails) {
                                 addMessage(visaDetails);
+
+                                // Mensaje de contacto después de los detalles
+                                setTimeout(() => {
+                                    addMessage(`Recibirás un mensaje de nuestro asesor para finalizar el proceso 📞\n\n¿Necesitas algo más?`);
+
+                                    // Guardar en Google Sheets
+                                    saveToGoogleSheets();
+
+                                    // Opciones finales
+                                    setTimeout(() => {
+                                        showQuickReplies(['📞 Contactar asesor', '🔄 Nueva consulta', '✈️ Ver servicios']);
+                                    }, 1000);
+                                }, 1500);
                             }
                         }, 500);
-                    }
-
-                    setTimeout(() => {
-                        addMessage(`Recibirás un mensaje de nuestro asesor para finalizar el proceso 📞\n\n¿Necesitas algo más?`);
-
-                        // Guardar en Google Sheets
-                        saveToGoogleSheets();
-
-                        // Opciones finales
+                    } else {
+                        // Para otros servicios, mostrar mensaje normal
                         setTimeout(() => {
-                            showQuickReplies(['📞 Contactar asesor', '🔄 Nueva consulta', '✈️ Ver servicios']);
-                        }, 1000);
-                    }, selectedService === 'visas' ? 1500 : 500);
+                            addMessage(`Recibirás un mensaje de nuestro asesor para finalizar el proceso 📞\n\n¿Necesitas algo más?`);
+
+                            // Guardar en Google Sheets
+                            saveToGoogleSheets();
+
+                            // Opciones finales
+                            setTimeout(() => {
+                                showQuickReplies(['📞 Contactar asesor', '🔄 Nueva consulta', '✈️ Ver servicios']);
+                            }, 1000);
+                        }, 500);
+                    }
 
                 }, 800);
             } else {
