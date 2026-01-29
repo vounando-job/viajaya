@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planifica tu Viaje | Agencia de Viajes</title>
+    <title>Asistente WhatsApp Viaja Ya</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
             --primary-color: #2d8cff;
-            --secondary-color: #ff7b29;
-            --accent-color: #25d366;
+            --secondary-color: #1a9e32;
+            --accent-color: #24b65a;
             --dark-color: #1a2b4c;
             --light-color: #f8f9fa;
             --text-color: #333;
@@ -26,17 +26,18 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
             line-height: 1.6;
             color: var(--text-color);
-            background-color: #f0f7ff;
+            background: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 450px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 15px;
         }
 
         /* Header */
@@ -52,340 +53,102 @@
         }
 
         .logo {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .logo i {
-            color: var(--secondary-color);
-        }
-
-        .logo span {
-            font-weight: 700;
+        .logo1 {
+            width: 200px;
+            height: 100px;
         }
 
         .header-content h1 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-            line-height: 1.3;
+            font-size: 2rem;
+            margin-bottom: 10px;
         }
 
         .header-content p {
             font-size: 1.1rem;
             opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
         }
 
-        /* Promociones */
-        .promotions {
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 30px;
-            color: var(--dark-color);
-            font-size: 1.8rem;
-            position: relative;
-        }
-
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--secondary-color);
-            margin: 10px auto;
-            border-radius: 2px;
-        }
-
-        .promo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-            margin-bottom: 40px;
-        }
-
-        .promo-card {
-            background: white;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .promo-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .promo-image {
-            height: 180px;
-            width: 100%;
-            object-fit: cover;
-        }
-
-        .promo-content {
-            padding: 20px;
-        }
-
-        .promo-content h3 {
-            color: var(--dark-color);
-            margin-bottom: 10px;
-            font-size: 1.3rem;
-        }
-
-        .promo-price {
-            color: var(--secondary-color);
-            font-weight: bold;
-            font-size: 1.2rem;
-            margin-bottom: 8px;
-        }
-
-        .promo-dates {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-
-        .promo-dates i {
-            color: var(--primary-color);
-        }
-
-        .select-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .select-btn:hover {
-            background-color: var(--dark-color);
-        }
-
-        /* Formulario */
-        .form-section {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--box-shadow);
-            margin-bottom: 50px;
-        }
-
-        .form-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .form-row .form-group {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-
-        .required:after {
-            content: " *";
-            color: #e74c3c;
-        }
-
-        input,
-        select,
-        textarea {
-            width: 100%;
-            padding: 14px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            border-color: var(--primary-color);
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(45, 140, 255, 0.2);
-        }
-
-        .form-section-title {
-            font-size: 1.4rem;
-            color: var(--dark-color);
-            margin: 30px 0 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-
-        .form-section-title:first-child {
-            margin-top: 0;
-        }
-
-        .optional-note {
-            font-size: 0.9rem;
-            color: #666;
-            font-style: italic;
-        }
-
-        /* CTA Button */
-        .cta-container {
-            text-align: center;
-            margin: 40px 0;
-            position: sticky;
-            bottom: 20px;
-            z-index: 100;
-        }
-
-        .cta-button {
+        .agent-badge {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 15px;
-            background: linear-gradient(135deg, var(--accent-color) 0%, #1da851 100%);
+            gap: 8px;
+            background: var(--accent-color);
             color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 20px 40px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
-            transition: var(--transition);
-            margin: 0 auto;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-left: 10px;
+            vertical-align: middle;
         }
 
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4);
+        /* Chat Container */
+        .whatsapp-chat {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+            overflow: hidden;
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #e0e0e0;
         }
 
-        .cta-button:active {
-            transform: translateY(0);
+        /* Chat Header */
+        .chat-header {
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
         }
 
-        .whatsapp-icon {
+        .chat-header-icon {
             font-size: 1.5rem;
         }
 
-        /* Footer */
-        footer {
-            background-color: var(--dark-color);
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 50px;
+        .chat-header-info h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
 
-        .footer-content p {
-            opacity: 0.8;
-            margin-bottom: 10px;
+        .chat-header-info p {
+            font-size: 0.85rem;
+            opacity: 0.9;
         }
 
-        /* Mensajes de error */
-        .error-message {
-            color: #e74c3c;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            display: none;
+        /* Chat Messages */
+        .chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            background: #f5f5f5;
         }
 
-        .input-error {
-            border-color: #e74c3c;
+        .message {
+            display: flex;
+            max-width: 85%;
+            animation: messageAppear 0.3s ease;
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .header-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .form-row {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .cta-button {
-                width: 90%;
-                padding: 18px 25px;
-                font-size: 1.1rem;
-            }
-
-            .promo-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .form-section {
-                padding: 20px;
-            }
-
-            .header-content h1 {
-                font-size: 1.5rem;
-            }
-
-            .logo {
-                font-size: 2rem;
-            }
-        }
-
-        /* Modal de confirmación */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-            animation: modalAppear 0.3s ease;
-        }
-
-        @keyframes modalAppear {
+        @keyframes messageAppear {
             from {
                 opacity: 0;
-                transform: translateY(-30px);
+                transform: translateY(10px);
             }
 
             to {
@@ -394,664 +157,1393 @@
             }
         }
 
-        .modal-icon {
-            font-size: 4rem;
-            color: var(--accent-color);
-            margin-bottom: 20px;
+        .bot-message {
+            align-self: flex-start;
         }
 
-        .modal h2 {
-            color: var(--dark-color);
-            margin-bottom: 15px;
+        .user-message {
+            align-self: flex-end;
         }
 
-        .modal p {
-            margin-bottom: 25px;
-            color: #555;
+        .message-content {
+            padding: 12px 15px;
+            border-radius: 18px;
+            position: relative;
+            word-wrap: break-word;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
         }
 
-        .close-modal {
+        .bot-message .message-content {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-top-left-radius: 5px;
+            margin-right: auto;
+        }
+
+        .user-message .message-content {
+            background: var(--primary-color);
+            color: white;
+            border-top-right-radius: 5px;
+            margin-left: auto;
+        }
+
+        .message-time {
+            font-size: 0.7rem;
+            opacity: 0.7;
+            margin-top: 4px;
+            text-align: right;
+        }
+
+        /* Error Message Style */
+        .error-message .message-content {
+            background: #fff5f5;
+            border: 1px solid #ffcdd2;
+            color: #dc3545;
+            border-top-left-radius: 5px;
+            margin-right: auto;
+        }
+
+        /* Chat Input */
+        .chat-input-container {
+            padding: 15px;
+            border-top: 1px solid #e0e0e0;
+            background: white;
+            flex-shrink: 0;
+        }
+
+        .chat-input-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            background: #f8f9fa;
+        }
+
+        .chat-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.1);
+        }
+
+        .send-btn {
             background-color: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 25px;
-            border-radius: 6px;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .send-btn:hover {
+            background-color: var(--secondary-color);
+            transform: scale(1.05);
+        }
+
+        .send-btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Quick Replies */
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .quick-reply {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 8px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .quick-reply:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Service Options */
+        .service-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .service-option {
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 500;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        .service-option:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border: 1px solid #ffc107;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 15px 0;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #856404;
+        }
+
+        .info-banner strong {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--dark-color);
+        }
+
+        /* Status Indicator */
+        .status-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 10px;
+            justify-content: center;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Loading Animation */
+        .typing-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: typing 1.4s infinite;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typing {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+
+            30% {
+                transform: translateY(-5px);
+                opacity: 1;
+            }
+        }
+
+        /* Data Summary */
+        .data-summary {
+            background: #f8f9fa;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .data-item:last-child {
+            border-bottom: none;
+        }
+
+        .data-label {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .data-value {
+            color: var(--text-color);
+        }
+
+        /* Confirmation Options */
+        .confirmation-options {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .confirm-btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             transition: var(--transition);
         }
 
-        .close-modal:hover {
-            background-color: var(--dark-color);
-        }
-
-        .logo1 {
-            width: 200px;
-            height: 100px;
-        }
-
-        /* Loader */
-        .loader {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.7);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
+        .confirm-yes {
+            background: var(--primary-color);
             color: white;
         }
 
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid #f3f3f3;
-            border-top: 5px solid var(--accent-color);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+        .confirm-no {
+            background: #f8f9fa;
+            color: var(--text-color);
+            border: 2px solid #e0e0e0;
         }
 
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+        .confirm-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estado de éxito/error */
-        .status-message {
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            display: none;
+        /* Validation Error */
+        .validation-error {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
             text-align: center;
+            background: #fff5f5;
+            padding: 8px 12px;
+            border-radius: 8px;
+            border: 1px solid #ffcdd2;
         }
 
-        .status-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
+        /* Responsive */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+
+            .whatsapp-chat {
+                height: 500px;
+            }
+
+            .message {
+                max-width: 90%;
+            }
+
+            .logo-text {
+                font-size: 1.7rem;
+            }
+
+            .confirmation-options {
+                flex-direction: column;
+            }
         }
 
-        .status-error {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
+        /* WhatsApp Status Bar */
+        .status-bar {
+            background: var(--accent-color);
+            color: white;
+            padding: 8px 0;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
         }
 
-        .status-info {
-            background-color: #d1ecf1;
-            color: #0c5460;
-            border: 1px solid #bee5eb;
+        /* Visa Details Style */
+        .visa-details {
+            background: #e8f4ff;
+            border: 2px solid #2d8cff;
+            border-radius: var(--border-radius);
+            padding: 15px;
+            margin: 15px 0;
+            text-align: left;
+            font-size: 0.9rem;
+            color: #1a2b4c;
+        }
+
+        .visa-details strong {
+            color: #1a2b4c;
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .visa-details ul {
+            padding-left: 20px;
+            margin: 5px 0;
+        }
+
+        .visa-details li {
+            margin-bottom: 3px;
+        }
+
+        .visa-details a {
+            color: #2d8cff;
+            text-decoration: underline;
+            word-break: break-all;
         }
     </style>
 </head>
 
 <body>
+    <!-- WhatsApp Status Bar -->
+    <div class="status-bar">
+        <div class="container">VIAJA YA • AGENTE AUTOMATIZADO WHATSAPP</div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container">
             <div class="logo">
-                <img src="https://viajaya.ec/wp-content/uploads/2024/08/logotipo-mundo-viajaya.png" alt=""
+                <img src="https://viajaya.ec/wp-content/uploads/2024/08/logotipo-mundo-viajaya.png" alt="Mundo Viaja Ya"
                     class="logo1">
             </div>
             <div class="header-content">
-                <h1>Planifica tu próximo viaje con nosotros</h1>
-                <p>Completa el formulario y confirma tus datos para que un asesor te contacte</p>
+                <h1>Asistente Virtual WhatsApp</h1>
+                <p>Conectando con <span class="agent-badge"><i class="fas fa-robot"></i> Agente Automatizado</span></p>
             </div>
         </div>
     </header>
 
-    <!-- Promociones Destacadas -->
-    <section class="promotions">
-        <div class="container">
-            <h2 class="section-title">Destinos Populares</h2>
-            <div class="promo-grid" id="promo-grid">
-                <!-- Las promociones se cargarán con JavaScript -->
+    <!-- Chat Container -->
+    <div class="container">
+        <div class="info-banner">
+            <strong>⚠️ AGENTE AUTOMATIZADO</strong>
+            Este agente funciona SOLO con las políticas oficiales de WhatsApp Business
+        </div>
+
+        <div class="whatsapp-chat">
+            <div class="chat-header">
+                <i class="fas fa-robot chat-header-icon"></i>
+                <div class="chat-header-info">
+                    <h3>Viaja Ya Ecuador</h3>
+                    <p>Agente Automatizado • En línea</p>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chat-messages">
+                <!-- Mensajes se cargarán dinámicamente -->
+            </div>
+
+            <!-- Chat Input -->
+            <div class="chat-input-container" id="chat-input-container">
+                <div class="chat-input-group">
+                    <input type="text" class="chat-input" id="user-input" placeholder="Escribe tu mensaje aquí..."
+                        autocomplete="off">
+                    <button class="send-btn" id="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="quick-replies" id="quick-replies">
+                    <!-- Respuestas rápidas se cargarán aquí -->
+                </div>
             </div>
         </div>
-    </section>
 
-    <!-- Formulario -->
-    <section class="form-section">
-        <div class="container">
-            <div class="form-container">
-                <h2 class="section-title">Información de tu Viaje</h2>
-
-                <form id="travel-form">
-                    <!-- Sección 1: Datos Personales -->
-                    <h3 class="form-section-title">Tus Datos</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nombre" class="required">Nombre completo</label>
-                            <input type="text" id="nombre" name="nombre" placeholder="Ej: María González López"
-                                required>
-                            <div class="error-message" id="nombre-error">Por favor ingresa tu nombre completo</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="whatsapp" class="required">Número de WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="whatsapp" placeholder="Ej: +593991234567" required>
-                            <div class="error-message" id="whatsapp-error">Ingresa un número de WhatsApp válido con
-                                código de país</div>
-                        </div>
-                    </div>
-
-                    <!-- Sección 2: Datos del Viaje -->
-                    <h3 class="form-section-title">Detalles del Viaje</h3>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="destino" class="required">Destino</label>
-                            <input type="text" id="destino" name="destino" placeholder="Ej: Cancún, México" required>
-                            <div class="error-message" id="destino-error">Selecciona o escribe un destino</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="tipo-viaje" class="required">Tipo de viaje</label>
-                            <select id="tipo-viaje" name="tipo-viaje" required>
-                                <option value="" disabled selected>Selecciona una opción</option>
-                                <option value="Vacaciones">Vacaciones</option>
-                                <option value="Luna de miel">Luna de miel</option>
-                                <option value="Familiar">Familiar</option>
-                                <option value="Trabajo">Trabajo</option>
-                                <option value="Aventura">Aventura</option>
-                            </select>
-                            <div class="error-message" id="tipo-viaje-error">Selecciona el tipo de viaje</div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fecha-salida" class="required">Fecha de salida</label>
-                            <input type="date" id="fecha-salida" name="fecha-salida" required>
-                            <div class="error-message" id="fecha-salida-error">Selecciona una fecha de salida válida
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="fecha-regreso" class="required">Fecha de regreso</label>
-                            <input type="date" id="fecha-regreso" name="fecha-regreso" required>
-                            <div class="error-message" id="fecha-regreso-error">La fecha de regreso debe ser posterior a
-                                la de salida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="personas" class="required">Cantidad de personas</label>
-                            <select id="personas" name="personas" required>
-                                <option value="" disabled selected>Selecciona cantidad</option>
-                                <option value="1">1 persona</option>
-                                <option value="2">2 personas</option>
-                                <option value="3">3 personas</option>
-                                <option value="4">4 personas</option>
-                                <option value="5">5 personas</option>
-                                <option value="6+">6 o más personas</option>
-                            </select>
-                            <div class="error-message" id="personas-error">Selecciona la cantidad de personas</div>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="presupuesto">Presupuesto estimado (opcional)</label>
-                            <input type="text" id="presupuesto" name="presupuesto" placeholder="Ej: $2,500 USD">
-                        </div>
-                    </div>
-
-                    <!-- Sección 3: Información Adicional -->
-                    <h3 class="form-section-title">Información adicional <span class="optional-note">(opcional)</span>
-                    </h3>
-                    <div class="form-group">
-                        <label for="comentarios">Comentarios adicionales</label>
-                        <textarea id="comentarios" name="comentarios" rows="4"
-                            placeholder="¿Algo más que debamos saber sobre tu viaje?"></textarea>
-                    </div>
-
-                    <!-- Mensajes de estado -->
-                    <div id="status-message" class="status-message"></div>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Button -->
-    <div class="cta-container">
-        <button class="cta-button" id="send-button">
-            <i class="fab fa-whatsapp whatsapp-icon"></i>
-            👉 Enviar información para confirmar
-        </button>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <p>© 2024 ViajesExpert. Todos los derechos reservados.</p>
-                <p>Tu información está protegida y solo será usada para organizar tu viaje.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="spinner"></div>
-        <p>Guardando datos y preparando WhatsApp...</p>
-    </div>
-
-    <!-- Modal de confirmación -->
-    <div class="modal" id="confirmation-modal">
-        <div class="modal-content">
-            <div class="modal-icon">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <h2>¡Información enviada!</h2>
-            <p>Hemos guardado tus datos y preparado el mensaje de WhatsApp. Revisa tu teléfono para confirmar la
-                información.</p>
-            <p>El bot te pedirá confirmación antes de asignar un asesor especializado.</p>
-            <button class="close-modal" id="close-modal">Entendido</button>
+        <!-- Status Indicator -->
+        <div class="status-indicator">
+            <div class="status-dot"></div>
+            <span>Agente conectado - Cumpliendo políticas WhatsApp Business</span>
         </div>
     </div>
 
     <script>
         // ================= CONFIGURACIÓN =================
-        // ¡IMPORTANTE! Cambia esta URL por la que obtuviste
-        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeTErS6DOn_JfRc12AjSaS8kPuwuijbU7Ubyf_cLjJ_ycGNB8KiOCINot_xYB5uxEIVg/exec';
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz26uiIOfjzIlp1xLW9OsmFxrOfCqsT2HEeRgwuskjv4CblgmsJlM1c7piDB1myD_3oow/exec';
+        const AGENCY_WHATSAPP_NUMBER = '593992898995';
 
-        // Cambia este número por el WhatsApp de tu agencia
-        const AGENCY_WHATSAPP_NUMBER = '593992898995'; // Ejemplo para Ecuador
+        // ================= VARIABLES DE ESTADO =================
+        let conversationState = 'INITIAL'; // INITIAL, SERVICE_SELECTED, DATA_COLLECTION, CONFIRMATION, COMPLETE
+        let selectedService = '';
+        let collectedData = {};
+        let dataCollectionPhase = 0;
+        let isProcessing = false;
+        let waitingForConfirmation = false;
+        let isCollectingContact = false;
 
-        // ================= DATOS DE PROMOCIONES =================
-        const promotions = [
-            {
-                id: 1,
-                name: "Cancún, México",
-                price: "$1,200 USD",
-                dates: "Enero - Marzo 2024",
-                image: "https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                id: 2,
-                name: "París, Francia",
-                price: "$1,800 USD",
-                dates: "Abril - Junio 2024",
-                image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                id: 3,
-                name: "Bali, Indonesia",
-                price: "$1,500 USD",
-                dates: "Julio - Septiembre 2024",
-                image: "https://images.unsplash.com/photo-1537953773345-d172ccf13cf1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-            },
-            {
-                id: 4,
-                name: "Nueva York, USA",
-                price: "$1,600 USD",
-                dates: "Octubre - Diciembre 2024",
-                image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+        // ================= FUNCIONES DE VALIDACIÓN MEJORADAS =================
+        function isValidEcuadorPhoneNumber(phone) {
+            // Limpiar el número manteniendo el + si existe
+            const cleanedPhone = phone.replace(/[\s\-\(\)\.]/g, '');
+
+            // Patrones válidos para Ecuador en WhatsApp:
+            // 1. 09xxxxxxxx (10 dígitos, empieza con 09)
+            // 2. 09xxxxxxxxx (11 dígitos, empieza con 09) - algunos tienen 11
+            // 3. 5939xxxxxxx (11 dígitos, empieza con 593)
+            // 4. +5939xxxxxxx (12 dígitos con +, empieza con +593)
+
+            // Verificar que solo tenga dígitos (y posiblemente + al inicio)
+            if (!/^\+?\d+$/.test(cleanedPhone)) {
+                return false;
             }
-        ];
 
-        // ================= FUNCIONES =================
+            // Eliminar el + para validación
+            const phoneWithoutPlus = cleanedPhone.startsWith('+') ? cleanedPhone.substring(1) : cleanedPhone;
 
-        // Cargar promociones en la página
-        function loadPromotions() {
-            const promoGrid = document.getElementById('promo-grid');
+            // Validar longitud y formato - MÁS FLEXIBLE
+            if (phoneWithoutPlus.length === 10) {
+                // Formato: 09xxxxxxxx
+                return /^09\d{8}$/.test(phoneWithoutPlus);
+            } else if (phoneWithoutPlus.length === 11) {
+                // Puede ser: 09xxxxxxxxx (11 dígitos empezando con 09) O 5939xxxxxxx
+                if (phoneWithoutPlus.startsWith('09')) {
+                    return /^09\d{9}$/.test(phoneWithoutPlus);
+                } else if (phoneWithoutPlus.startsWith('5939')) {
+                    return /^5939\d{8}$/.test(phoneWithoutPlus);
+                }
+            } else if (cleanedPhone.length === 12 && cleanedPhone.startsWith('+')) {
+                // Formato: +5939xxxxxxx
+                const withoutPlus = cleanedPhone.substring(1);
+                return withoutPlus.length === 11 && /^5939\d{8}$/.test(withoutPlus);
+            }
 
-            promotions.forEach(promo => {
-                const promoCard = document.createElement('div');
-                promoCard.className = 'promo-card';
-                promoCard.innerHTML = `
-                    <img src="${promo.image}" alt="${promo.name}" class="promo-image">
-                    <div class="promo-content">
-                        <h3>${promo.name}</h3>
-                        <div class="promo-price">${promo.price}</div>
-                        <div class="promo-dates">
-                            <i class="far fa-calendar-alt"></i>
-                            ${promo.dates}
-                        </div>
-                        <button class="select-btn" data-destination="${promo.name}">
-                            Seleccionar destino
-                        </button>
-                    </div>
-                `;
-
-                promoGrid.appendChild(promoCard);
-            });
-
-            // Añadir event listeners a los botones de selección
-            document.querySelectorAll('.select-btn').forEach(button => {
-                button.addEventListener('click', function () {
-                    const destination = this.getAttribute('data-destination');
-                    document.getElementById('destino').value = destination;
-
-                    // Scroll suave al formulario
-                    document.querySelector('.form-section').scrollIntoView({
-                        behavior: 'smooth'
-                    });
-
-                    // Efecto visual de confirmación
-                    this.textContent = "✓ Destino seleccionado";
-                    this.style.backgroundColor = "#2ecc71";
-                    setTimeout(() => {
-                        this.textContent = "Seleccionar destino";
-                        this.style.backgroundColor = "";
-                    }, 2000);
-                });
-            });
+            return false;
         }
 
-        // Validar formulario
-        function validateForm() {
-            let isValid = true;
+        function formatEcuadorPhoneNumber(phone) {
+            // Limpiar el número
+            const cleanedPhone = phone.replace(/[\s\-\(\)\.\+]/g, '');
 
-            // Resetear errores
-            document.querySelectorAll('.error-message').forEach(error => {
-                error.style.display = 'none';
-            });
-            document.querySelectorAll('input, select').forEach(input => {
-                input.classList.remove('input-error');
-            });
-
-            // Validar nombre
-            const nombre = document.getElementById('nombre');
-            if (!nombre.value.trim()) {
-                document.getElementById('nombre-error').style.display = 'block';
-                nombre.classList.add('input-error');
-                isValid = false;
+            if (cleanedPhone.length === 10 && cleanedPhone.startsWith('09')) {
+                return cleanedPhone;
+            } else if (cleanedPhone.length === 11 && cleanedPhone.startsWith('09')) {
+                // Si tiene 11 dígitos empezando con 09, mantenerlo
+                return cleanedPhone;
+            } else if (cleanedPhone.length === 11 && cleanedPhone.startsWith('5939')) {
+                return '0' + cleanedPhone.substring(3);
+            } else if (cleanedPhone.length === 12 && phone.includes('+5939')) {
+                return '0' + cleanedPhone.substring(4);
             }
 
-            // Validar WhatsApp (formato internacional básico)
-            const whatsapp = document.getElementById('whatsapp');
-            const whatsappRegex = /^\+?[1-9]\d{7,14}$/;
-            if (!whatsappRegex.test(whatsapp.value.replace(/\s/g, ''))) {
-                document.getElementById('whatsapp-error').style.display = 'block';
-                whatsapp.classList.add('input-error');
-                isValid = false;
-            }
-
-            // Validar destino
-            const destino = document.getElementById('destino');
-            if (!destino.value.trim()) {
-                document.getElementById('destino-error').style.display = 'block';
-                destino.classList.add('input-error');
-                isValid = false;
-            }
-
-            // Validar tipo de viaje
-            const tipoViaje = document.getElementById('tipo-viaje');
-            if (!tipoViaje.value) {
-                document.getElementById('tipo-viaje-error').style.display = 'block';
-                tipoViaje.classList.add('input-error');
-                isValid = false;
-            }
-
-            // Validar fechas
-            const fechaSalida = document.getElementById('fecha-salida');
-            const fechaRegreso = document.getElementById('fecha-regreso');
-            const hoy = new Date().toISOString().split('T')[0];
-
-            if (!fechaSalida.value) {
-                document.getElementById('fecha-salida-error').style.display = 'block';
-                fechaSalida.classList.add('input-error');
-                isValid = false;
-            } else if (fechaSalida.value < hoy) {
-                document.getElementById('fecha-salida-error').textContent = "La fecha de salida no puede ser en el pasado";
-                document.getElementById('fecha-salida-error').style.display = 'block';
-                fechaSalida.classList.add('input-error');
-                isValid = false;
-            }
-
-            if (!fechaRegreso.value) {
-                document.getElementById('fecha-regreso-error').style.display = 'block';
-                fechaRegreso.classList.add('input-error');
-                isValid = false;
-            } else if (fechaRegreso.value && fechaSalida.value && fechaRegreso.value <= fechaSalida.value) {
-                document.getElementById('fecha-regreso-error').style.display = 'block';
-                fechaRegreso.classList.add('input-error');
-                isValid = false;
-            }
-
-            // Validar cantidad de personas
-            const personas = document.getElementById('personas');
-            if (!personas.value) {
-                document.getElementById('personas-error').style.display = 'block';
-                personas.classList.add('input-error');
-                isValid = false;
-            }
-
-            return isValid;
+            return cleanedPhone;
         }
 
-        // Formatear fecha para WhatsApp
-        function formatDateForDisplay(dateString) {
-            if (!dateString) return "No especificada";
-            const date = new Date(dateString);
-            return date.toLocaleDateString('es-ES', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-        }
+        function isValidDateInput(dateStr) {
+            // Convertir a minúsculas
+            const lowerDateStr = dateStr.toLowerCase();
 
-        // FUNCIÓN MEJORADA - Guardar en Google Sheets
-        async function saveToGoogleSheets(formData) {
-            console.log('📤 Iniciando envío a Google Sheets...', formData);
-
-            try {
-                // Crear FormData con los nombres CORRECTOS
-                const params = new URLSearchParams();
-
-                // NOMBRES CORRECTOS (usa guiones bajos)
-                params.append('nombre', formData.nombre || '');
-                params.append('whatsapp', formData.whatsapp || '');
-                params.append('destino', formData.destino || '');
-                params.append('tipo_viaje', formData.tipoViaje || '');
-                params.append('fecha_salida', formData.fechaSalida || '');
-                params.append('fecha_regreso', formData.fechaRegreso || '');
-                params.append('personas', formData.personas || '');
-                params.append('presupuesto', formData.presupuesto || '');
-                params.append('comentarios', formData.comentarios || '');
-
-                console.log('📋 Parámetros a enviar:', params.toString());
-
-                // USA LA URL CORRECTA (la misma en ambas partes)
-                const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzeTErS6DOn_JfRc12AjSaS8kPuwuijbU7Ubyf_cLjJ_ycGNB8KiOCINot_xYB5uxEIVg/exec';
-
-
-                console.log('🔗 URL destino:', SCRIPT_URL);
-
-                // ENVIAR con fetch - FORMA CORRECTA
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                   
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    body: params // No uses .toString() aquí
-                });
-
-                console.log('📨 Respuesta recibida. Status:', response.status);
-
-                return {
-                    success: true,
-                    message: 'Datos enviados al servidor'
-                };
-
-            } catch (error) {
-                console.error('💥 Error:', error);
-                return {
-                    success: false,
-                    message: 'Error: ' + error.message
-                };
-            }
-        }
-        // Mostrar mensaje de estado
-        function showStatusMessage(message, type = 'success') {
-            const statusDiv = document.getElementById('status-message');
-            statusDiv.textContent = message;
-            statusDiv.className = `status-message status-${type}`;
-            statusDiv.style.display = 'block';
-
-            // Ocultar después de 5 segundos
-            setTimeout(() => {
-                statusDiv.style.display = 'none';
-            }, 5000);
-        }
-
-        // Enviar datos a WhatsApp
-        async function sendToWhatsApp() {
-            if (!validateForm()) {
-                showStatusMessage('Por favor corrige los errores en el formulario antes de enviar.', 'error');
-                return;
+            // Verificar si contiene números imposibles como "32", "40", etc.
+            const numbers = dateStr.match(/\d+/g);
+            if (numbers) {
+                for (const num of numbers) {
+                    const day = parseInt(num);
+                    // Días imposibles (más de 31 o menos de 1)
+                    if (day > 31 || day < 1) {
+                        return false;
+                    }
+                }
             }
 
-            // Obtener datos del formulario
-            const formData = {
-                nombre: document.getElementById('nombre').value,
-                whatsapp: document.getElementById('whatsapp').value,
-                destino: document.getElementById('destino').value,
-                tipoViaje: document.getElementById('tipo-viaje').value,
-                fechaSalida: document.getElementById('fecha-salida').value,
-                fechaRegreso: document.getElementById('fecha-regreso').value,
-                personas: document.getElementById('personas').value,
-                presupuesto: document.getElementById('presupuesto').value || "No especificado",
-                comentarios: document.getElementById('comentarios').value || "Sin comentarios adicionales"
+            // Meses en español
+            const meses = {
+                'enero': 1, 'febrero': 2, 'marzo': 3, 'abril': 4, 'mayo': 5, 'junio': 6,
+                'julio': 7, 'agosto': 8, 'septiembre': 9, 'octubre': 10, 'noviembre': 11, 'diciembre': 12,
+                'ene': 1, 'feb': 2, 'mar': 3, 'abr': 4, 'may': 5, 'jun': 6,
+                'jul': 7, 'ago': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dic': 12
             };
 
-            // Mostrar loader
-            document.getElementById('loader').style.display = 'flex';
+            // Verificar si menciona al menos un mes válido
+            let hasValidMonth = false;
+            for (const mes in meses) {
+                if (lowerDateStr.includes(mes)) {
+                    hasValidMonth = true;
+                    break;
+                }
+            }
 
-            try {
-                // Paso 1: Guardar en Google Sheets
-                const saveResult = await saveToGoogleSheets(formData);
+            // Si tiene números pero no menciona mes, puede ser formato numérico
+            if (!hasValidMonth && numbers && numbers.length >= 2) {
+                // Verificar que los números sean razonables para días
+                const validNumbers = numbers.every(num => {
+                    const n = parseInt(num);
+                    return n >= 1 && n <= 31;
+                });
+                return validNumbers && numbers.length >= 2;
+            }
 
-                // Paso 2: Preparar WhatsApp
-                const message = `✈️ *Resumen de tu solicitud de viaje*%0A%0A` +
-                    `*Nombre:* ${formData.nombre}%0A` +
-                    `*WhatsApp:* ${formData.whatsapp}%0A` +
-                    `*Destino:* ${formData.destino}%0A` +
-                    `*Fechas:* ${formatDateForDisplay(formData.fechaSalida)} al ${formatDateForDisplay(formData.fechaRegreso)}%0A` +
-                    `*Personas:* ${formData.personas}%0A` +
-                    `*Tipo de viaje:* ${formData.tipoViaje}%0A` +
-                    `*Presupuesto:* ${formData.presupuesto}%0A%0A` +
-                    `*Comentarios:* ${formData.comentarios}%0A%0A` +
-                    `¿Los datos son correctos?%0A` +
-                    `Responde:%0A✅ SI para confirmar%0A❌ NO para corregir`;
+            // Aceptar formatos como "14-28 febrero" o "14/02 al 28/02"
+            const datePatterns = [
+                /(\d{1,2})\s*[-a]\s*(\d{1,2})\s*(de\s+)?(\w+)/i,
+                /(\d{1,2})\s*\/\s*(\d{1,2})\s*(al\s+)?(\d{1,2})\s*\/\s*(\d{1,2})/i,
+                /(\d{1,2})\s+y\s+(\d{1,2})\s+de\s+(\w+)/i,
+                /del\s+(\d{1,2})\s+al\s+(\d{1,2})\s+de\s+(\w+)/i
+            ];
 
-                // Crear enlace de WhatsApp
-                const whatsappUrl = `https://wa.me/${AGENCY_WHATSAPP_NUMBER}?text=${message}`;
+            for (const pattern of datePatterns) {
+                if (pattern.test(lowerDateStr)) {
+                    return true;
+                }
+            }
 
-                // Ocultar loader
-                document.getElementById('loader').style.display = 'none';
+            return hasValidMonth || (numbers && numbers.length >= 2);
+        }
 
-                // Mostrar modal de confirmación
-                document.getElementById('confirmation-modal').style.display = 'flex';
+        function extractNameAndPhone(message) {
+            // Buscar número de teléfono en el mensaje
+            const phonePatterns = [
+                /(\+?593\s?9\d{8})/g,
+                /(09\d{8,9})/g, // Ahora acepta 8 o 9 dígitos después del 09
+                /(09\d{2}\s?\d{3}\s?\d{3,4})/g, // Acepta 3 o 4 dígitos al final
+                /(09\d{2}[-\.]?\d{3}[-\.]?\d{3,4})/g, // Acepta 3 o 4 dígitos al final
+                /(\+593\s?9\d{8})/g
+            ];
 
-                // Abrir WhatsApp después de un breve delay
-                setTimeout(() => {
-                    window.open(whatsappUrl, '_blank');
-                }, 1000);
+            let foundPhone = null;
+            let remainingText = message;
 
-                // Mostrar mensaje de éxito
-                showStatusMessage('¡Datos enviados correctamente! Revisa WhatsApp para confirmar.', 'success');
+            // Buscar cualquier patrón de teléfono
+            for (const pattern of phonePatterns) {
+                const match = message.match(pattern);
+                if (match && match[0]) {
+                    foundPhone = match[0].trim();
+                    remainingText = message.replace(match[0], '').trim();
+                    break;
+                }
+            }
 
-                // Opcional: Resetear el formulario después de 3 segundos
-                setTimeout(() => {
-                    document.getElementById('travel-form').reset();
-                    // Restablecer fecha mínima
-                    const today = new Date().toISOString().split('T')[0];
-                    document.getElementById('fecha-salida').min = today;
-                }, 3000);
+            // Limpiar el texto restante (nombre)
+            const name = remainingText
+                .replace(/[0-9\+\(\)\-\.]/g, ' ') // Reemplazar dígitos y símbolos con espacios
+                .replace(/\s+/g, ' ') // Normalizar espacios múltiples
+                .trim();
 
-            } catch (error) {
-                // Ocultar loader
-                document.getElementById('loader').style.display = 'none';
+            return {
+                name: name || null,
+                phone: foundPhone || null,
+                hasPhone: !!foundPhone
+            };
+        }
 
-                // Mostrar mensaje de error
-                showStatusMessage('Error al procesar la solicitud. Intenta nuevamente.', 'error');
-                console.error('Error completo:', error);
+        // ================= FUNCIONES DEL CHAT =================
+        function addMessage(message, isUser = false, isTyping = false, isError = false) {
+            const chatMessages = document.getElementById('chat-messages');
+            const messageDiv = document.createElement('div');
+
+            if (isError) {
+                messageDiv.className = 'message bot-message error-message';
+            } else {
+                messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
+            }
+
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-ES', {
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+
+            if (isTyping) {
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        <div class="typing-indicator">
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                            <div class="typing-dot"></div>
+                        </div>
+                        <div class="message-time">${timeString}</div>
+                    </div>
+                `;
+            } else {
+                messageDiv.innerHTML = `
+                    <div class="message-content">
+                        ${message.replace(/\n/g, '<br>')}
+                        <div class="message-time">${timeString}</div>
+                    </div>
+                `;
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            addMessage('', false, true);
+        }
+
+        function removeTypingIndicator() {
+            const chatMessages = document.getElementById('chat-messages');
+            const typingMessage = chatMessages.querySelector('.typing-indicator');
+            if (typingMessage) {
+                typingMessage.closest('.message').remove();
             }
         }
 
-        // Inicializar fecha mínima en los date pickers
-        function initializeDatePickers() {
-            const today = new Date().toISOString().split('T')[0];
-            document.getElementById('fecha-salida').min = today;
+        function showQuickReplies(replies) {
+            const quickRepliesContainer = document.getElementById('quick-replies');
+            quickRepliesContainer.innerHTML = '';
 
-            // Actualizar fecha mínima de regreso cuando cambia la de salida
-            document.getElementById('fecha-salida').addEventListener('change', function () {
-                document.getElementById('fecha-regreso').min = this.value;
+            replies.forEach(reply => {
+                const button = document.createElement('button');
+                button.className = 'quick-reply';
+                button.textContent = reply;
+                button.onclick = () => {
+                    document.getElementById('user-input').value = reply;
+                    sendMessage();
+                };
+                quickRepliesContainer.appendChild(button);
             });
         }
 
-        // ================= INICIALIZACIÓN =================
+        // ================= PROCESO ESTRICTO WHATSAPP =================
+        function handleInitialGreeting(userMessage) {
+            const greetingPatterns = [
+                'hola', 'buenas', 'buen día', 'buenas tardes', 'buenos días',
+                'buenasnoches', '👋', 'hi', 'hello', 'hey', 'saludos',
+                'holis', 'hola!', 'holaa', 'ola'
+            ];
+            const lowerMessage = userMessage.toLowerCase().trim();
+
+            // Aceptar si el mensaje comienza con o contiene algún saludo
+            return greetingPatterns.some(pattern =>
+                lowerMessage === pattern ||
+                lowerMessage.startsWith(pattern) ||
+                lowerMessage.includes(pattern)
+            );
+        }
+
+        function processInitialGreeting() {
+            setTimeout(() => {
+                addMessage(`¡Hola! 🌏\nGracias por contactar a Viaja Ya Ecuador ✈️\nTe ofrezco estos servicios: visas, boletos o seguros\n\nEscribe cuál te interesa:`);
+                conversationState = 'SERVICE_SELECTED';
+            }, 800);
+        }
+
+        function handleServiceSelection(userMessage) {
+            const lowerMessage = userMessage.toLowerCase();
+
+            if (lowerMessage.includes('boleto') || lowerMessage.includes('✈️') || lowerMessage.includes('vuelo') || lowerMessage.includes('avión')) {
+                selectedService = 'boletos';
+                startBoletosProcess();
+                return true;
+            } else if (lowerMessage.includes('visa') || lowerMessage.includes('🛂') || lowerMessage.includes('visado')) {
+                selectedService = 'visas';
+                startVisasProcess();
+                return true;
+            } else if (lowerMessage.includes('seguro') || lowerMessage.includes('🛡️') || lowerMessage.includes('seguros')) {
+                selectedService = 'seguros';
+                startSegurosProcess();
+                return true;
+            }
+            return false;
+        }
+
+        function startBoletosProcess() {
+            conversationState = 'DATA_COLLECTION';
+            dataCollectionPhase = 1;
+
+            setTimeout(() => {
+                addMessage(`Perfecto, boletos aéreos ✈️\n\nPor favor dime:\n1. Ciudad de origen\n2. Ciudad de destino\n\nPuedes escribir ambas separadas por coma, ejemplo: Quito, Miami`);
+                showQuickReplies(['Quito, Miami', 'Guayaquil, Madrid', 'Cuenca, Bogotá']);
+            }, 800);
+        }
+
+        function startVisasProcess() {
+            conversationState = 'DATA_COLLECTION';
+            dataCollectionPhase = 1;
+
+            setTimeout(() => {
+                addMessage(`Visas de viaje 🛂\n\n¿Para qué país necesitas la visa?\nOpciones: USA, Canadá, Europa Schengen, otros`);
+                showQuickReplies(['USA', 'Canadá', 'Europa Schengen', 'Otro país']);
+            }, 800);
+        }
+
+        function startSegurosProcess() {
+            conversationState = 'DATA_COLLECTION';
+            dataCollectionPhase = 1;
+
+            setTimeout(() => {
+                addMessage(`Seguros de viaje 🛡️\n\n¿Qué tipo de seguro necesitas?\nOpciones: Viaje turístico, Estudios, Trabajo, Familiar`);
+                showQuickReplies(['Viaje turístico', 'Estudios', 'Trabajo', 'Familiar']);
+            }, 800);
+        }
+
+        function processBoletosData(userMessage, phase) {
+            switch (phase) {
+                case 1:
+                    // Origen y destino
+                    if (userMessage.includes(',')) {
+                        const parts = userMessage.split(',').map(p => p.trim());
+                        collectedData.origen = parts[0];
+                        collectedData.destino = parts[1] || 'No especificado';
+                    } else {
+                        // Intentar extraer origen y destino
+                        const words = userMessage.split(' ');
+                        if (words.length >= 3 && (userMessage.includes(' a ') || userMessage.includes(' para '))) {
+                            // Formato: "quito a miami" o "quito para miami"
+                            const separator = userMessage.includes(' a ') ? ' a ' : ' para ';
+                            const parts = userMessage.split(separator);
+                            collectedData.origen = parts[0].trim();
+                            collectedData.destino = parts[1].trim();
+                        } else {
+                            // Asumir que solo es destino, origen por defecto Quito
+                            collectedData.origen = 'Quito';
+                            collectedData.destino = userMessage;
+                        }
+                    }
+                    dataCollectionPhase = 2;
+                    setTimeout(() => {
+                        addMessage(`Gracias ✈️\n\nAhora dime las fechas de viaje:\n• Fecha de ida\n• Fecha de regreso\n\nEjemplo: 15 marzo, 25 marzo`);
+                        showQuickReplies(['Este mes', 'Próximo mes', 'Fecha específica']);
+                    }, 800);
+                    break;
+
+                case 2:
+                    // Fechas CON VALIDACIÓN
+                    if (!isValidDateInput(userMessage)) {
+                        addMessage(`⚠️ Por favor ingresa fechas válidas\nEjemplo: 15 marzo, 25 marzo\no: 14 de febrero a 28 de febrero\no: 14-28 febrero`, false, false, true);
+
+                        // Volver a mostrar las opciones rápidas
+                        setTimeout(() => {
+                            showQuickReplies(['Este mes', 'Próximo mes', 'Fecha específica']);
+                        }, 500);
+                        return;
+                    }
+                    collectedData.fechas = userMessage;
+                    dataCollectionPhase = 3;
+                    setTimeout(() => {
+                        addMessage(`Perfecto 📅\n\n¿Cuántas personas viajan?\n¿Hay niños o bebés? 👥\n\nEjemplo: 2 adultos, 1 niño`);
+                        showQuickReplies(['1 adulto', '2 adultos', 'Familia con niños', 'Grupo']);
+                    }, 800);
+                    break;
+
+                case 3:
+                    // Personas
+                    collectedData.personas = userMessage;
+                    dataCollectionPhase = 4;
+                    setTimeout(() => {
+                        addMessage(`Gracias 👥\n\nAhora necesito:\n• Nombre completo del titular\n• Número de contacto\n\nPuedes escribir ambos juntos o separados`);
+                    }, 800);
+                    break;
+
+                case 4:
+                    // Nombre y contacto - CON EXTRACCIÓN AUTOMÁTICA
+                    const extracted = extractNameAndPhone(userMessage);
+
+                    if (extracted.name && extracted.name.length > 2) {
+                        collectedData.nombre = extracted.name;
+                    } else {
+                        // Si no se extrajo nombre válido, usar todo el texto (sin números)
+                        const nameOnly = userMessage.replace(/[0-9\+\(\)\-\.]/g, ' ').trim();
+                        if (nameOnly.length > 2) {
+                            collectedData.nombre = nameOnly;
+                        }
+                    }
+
+                    if (extracted.hasPhone) {
+                        // Validar número extraído
+                        if (!isValidEcuadorPhoneNumber(extracted.phone)) {
+                            addMessage(`⚠️ El número encontrado no es válido. Por favor ingresa un número válido de Ecuador\n\nFormatos aceptados:\n• 0999999999 `, false, false, true);
+                            return;
+                        }
+                        collectedData.contacto = formatEcuadorPhoneNumber(extracted.phone);
+                        dataCollectionPhase = 5;
+                        setTimeout(() => {
+                            addMessage(`Gracias 📱\n\nÚltima pregunta:\n¿Tienes pasaporte vigente? ✅\nOpciones: Sí, No, En proceso`);
+                            showQuickReplies(['Sí', 'No', 'En proceso']);
+                        }, 800);
+                    } else {
+                        // Si no encontró número, pedirlo
+                        if (!collectedData.nombre || collectedData.nombre.length < 3) {
+                            collectedData.nombre = userMessage.replace(/[0-9]/g, '').trim();
+                        }
+                        setTimeout(() => {
+                            addMessage(`Gracias, ahora dime tu número de contacto de Ecuador 📱\n\nFormatos aceptados:\n• 0999999999 `);
+                        }, 800);
+                        dataCollectionPhase = 4.5;
+                        isCollectingContact = true;
+                    }
+                    break;
+
+                case 4.5:
+                    // Solo contacto (después de nombre) - CON VALIDACIÓN MEJORADA
+                    if (!isValidEcuadorPhoneNumber(userMessage)) {
+                        addMessage(`⚠️ Por favor ingresa un número válido de Ecuador\n\nEjemplos:\n• 0999999999`, false, false, true);
+                        return;
+                    }
+
+                    collectedData.contacto = formatEcuadorPhoneNumber(userMessage);
+                    isCollectingContact = false;
+                    dataCollectionPhase = 5;
+                    setTimeout(() => {
+                        addMessage(`Gracias 📱\n\nÚltima pregunta:\n¿Tienes pasaporte vigente? ✅\nOpciones: Sí, No, En proceso`);
+                        showQuickReplies(['Sí', 'No', 'En proceso']);
+                    }, 800);
+                    break;
+
+                case 5:
+                    // Pasaporte
+                    collectedData.pasaporte = userMessage;
+                    showDataConfirmation();
+                    break;
+            }
+        }
+
+        function processOtherServiceData(userMessage, phase) {
+            // Para visas y seguros, proceso simplificado
+            switch (phase) {
+                case 1:
+                    // Primer dato específico del servicio
+                    collectedData.tipo = userMessage;
+                    dataCollectionPhase = 2;
+                    setTimeout(() => {
+                        addMessage(`Gracias 📋\n\nAhora dime tu nombre completo`);
+                    }, 800);
+                    break;
+
+                case 2:
+                    // Nombre
+                    collectedData.nombre = userMessage;
+                    dataCollectionPhase = 3;
+                    setTimeout(() => {
+                        addMessage(`Gracias ${userMessage.split(' ')[0]} 👋\n\nAhora dime tu número de contacto de Ecuador 📱\n\n`);
+                    }, 800);
+                    break;
+
+                case 3:
+                    // Contacto - CON VALIDACIÓN MEJORADA Y ERROR EN CHAT
+                    if (!isValidEcuadorPhoneNumber(userMessage)) {
+                        addMessage(`⚠️ Por favor ingresa un número válido de Ecuador\n\n`, false, false, true);
+                        return;
+                    }
+
+                    collectedData.contacto = formatEcuadorPhoneNumber(userMessage);
+                    dataCollectionPhase = 4;
+                    setTimeout(() => {
+                        addMessage(`Gracias 📱\n\n¿Tienes pasaporte vigente? ✅\nOpciones: Sí, No, En proceso`);
+                        showQuickReplies(['Sí', 'No', 'En proceso']);
+                    }, 800);
+                    break;
+
+                case 4:
+                    // Pasaporte
+                    collectedData.pasaporte = userMessage;
+                    dataCollectionPhase = 5;
+                    setTimeout(() => {
+                        addMessage(`Gracias ✅\n\n¿Fecha estimada del viaje? 📅\nOpciones: Este mes, Próximo mes, Por definir`);
+                        showQuickReplies(['Este mes', 'Próximo mes', 'Por definir']);
+                    }, 800);
+                    break;
+
+                case 5:
+                    // Fecha viaje
+                    collectedData.fecha_viaje = userMessage;
+                    showDataConfirmation();
+                    break;
+            }
+        }
+
+        // ================= MOSTRAR INFORMACIÓN DE VISA MEJORADA =================
+        function showVisaDetails(visaType) {
+            let visaDetails = '';
+            const lowerVisaType = visaType.toLowerCase();
+
+            if (lowerVisaType.includes('usa') || lowerVisaType.includes('america') || lowerVisaType.includes('americano')) {
+                visaDetails = `
+                    <div class="visa-details">
+                        <strong style="font-size: 1.1rem;">🔹 Visa Americana</strong><br><br>
+                        <strong>Requisito principal:</strong> Pasaporte vigente<br><br>
+                        <strong>✅ INCLUYE:</strong>
+                        <ul>
+                            <li>Toma de fotografía</li>
+                            <li>Asistencia durante todo el proceso</li>
+                            <li>Llenado de formulario</li>
+                            <li>Creación de cuenta consular</li>
+                            <li>Toma de turno</li>
+                            <li>Capacitación previa a la cita</li>
+                        </ul>
+                        <strong>⚠️ LO QUE NO INCLUYE:</strong><br>
+                        • Pago de la tasa consular (se paga directamente a la embajada americana)<br><br>
+                        <strong>💰 ¡El precio más accesible para iniciar tu proceso!</strong><br><br>
+                        <strong>📍 Ubicación:</strong><br>
+                        <a href="https://share.google/9XSTdKfAE9iMxfAlv" target="_blank">
+                            https://share.google/9XSTdKfAE9iMxfAlv
+                        </a>
+                    </div>`;
+            }
+            else if (lowerVisaType.includes('schengen') || lowerVisaType.includes('europa') || lowerVisaType.includes('europea')) {
+                visaDetails = `
+                    <div class="visa-details">
+                        <strong style="font-size: 1.1rem;">🔹 Visa Schengen</strong><br>
+                        <em>🌍✨ ¡Con tu visa Schengen de TURISMO, recorre Francia, España, Alemania y a 26 países de Europa sin fronteras! 🛫💼</em><br><br>
+                        <strong>📋 REQUISITOS:</strong>
+                        <ul>
+                            <li>Pasaporte vigente</li>
+                            <li>Solvencia económica</li>
+                            <li>RUC (si es independiente)</li>
+                            <li>Roles de pago (si es dependiente)</li>
+                        </ul>
+                        <strong>✅ SERVICIO DE ASESORÍA:</strong>
+                        <ul>
+                            <li>Validación de perfil</li>
+                            <li>Creación de la cuenta consular</li>
+                            <li>Llenado de formulario</li>
+                            <li>Creación de la carpeta con documentos que el cliente provee</li>
+                            <li>Generación del pago para la tasa consular</li>
+                            <li>Toma de turno</li>
+                            <li>Pre-reservas de alojamiento y boletos aéreos</li>
+                            <li>Seguro de viaje x7 días</li>
+                            <li>Asesoría personalizada</li>
+                            <li>Capacitación previa cita con el cónsul</li>
+                        </ul>
+                        <strong>⚠️ LO QUE NO INCLUYE:</strong><br>
+                        • Pago de la tasa consular (correspondiente al pago requerido por la embajada de España)<br><br>
+                        <strong>📍 También puedes visitarnos:</strong><br>
+                        <a href="https://share.google/Q7sp91h4lhMRAz1rI" target="_blank">
+                            https://share.google/Q7sp91h4lhMRAz1rI
+                        </a><br><br>
+                        <strong>✨ ¡Listos para ayudarte a cumplir tu sueño europeo!</strong>
+                    </div>`;
+            }
+            else if (lowerVisaType.includes('canad') || lowerVisaType.includes('canada')) {
+                visaDetails = `
+                    <div class="visa-details">
+                        <strong style="font-size: 1.1rem;">🔹 Visa Canadiense</strong><br>
+                        <em>🇨🇦✨ ¡Hola! Gracias por interesarte en la visa canadiense de TURISMO.</em><br><br>
+                        <strong>📋 REQUISITOS:</strong>
+                        <ul>
+                            <li>Pasaporte vigente</li>
+                            <li>Solvencia económica</li>
+                            <li>RUC (si es independiente)</li>
+                            <li>Roles de pago (si es dependiente)</li>
+                        </ul>
+                        <strong>✅ SERVICIO DE ASESORÍA:</strong>
+                        <ul>
+                            <li>Validación de perfil</li>
+                            <li>Creación de la cuenta consular</li>
+                            <li>Llenado de formulario</li>
+                            <li>Generación del pago para la tasa consular</li>
+                            <li>Toma de turno para los biométricos</li>
+                            <li>Creación de la carpeta con los documentos que el cliente provee</li>
+                            <li>Asesoría personalizada</li>
+                        </ul>
+                        <strong>⚠️ LO QUE NO INCLUYE:</strong><br>
+                        • Pago de la tasa consular (correspondiente al pago requerido por la embajada de Canadá)<br><br>
+                        <strong>✨ En Viaja Ya, ofrecemos una asesoría completa para facilitar tu trámite.</strong>
+                    </div>`;
+            }
+            else if (lowerVisaType.includes('mexic') || lowerVisaType.includes('mexico')) {
+                visaDetails = `
+                    <div class="visa-details">
+                        <strong style="font-size: 1.1rem;">🔹 Visa Mexicana</strong><br>
+                        <em>✨ ¡Hola! Gracias por interesarte en la Visa Mexicana 🇲🇽</em><br><br>
+                        <strong>✅ SERVICIO DE ASESORÍA:</strong>
+                        <ul>
+                            <li>Validación de perfil</li>
+                            <li>Creación de la cuenta consular</li>
+                            <li>Llenado de formulario</li>
+                            <li>Creación de la carpeta con documentos que el cliente provee</li>
+                            <li>Generación del pago para la tasa consular</li>
+                            <li>Toma de turno</li>
+                            <li>Asesoría personalizada</li>
+                            <li>Capacitación previa cita con el cónsul</li>
+                        </ul>
+                        <strong>⚠️ LO QUE NO INCLUYE:</strong><br>
+                        • Pago de la tasa consular (correspondiente al pago requerido por la embajada MEXICANA)<br><br>
+                        <strong>✈️ En Viaja Ya, ofrecemos una asesoría completa para facilitar tu trámite.</strong>
+                    </div>`;
+            }
+            else if (lowerVisaType.includes('otro') || lowerVisaType.includes('otros') || lowerVisaType.includes('otro país')) {
+                visaDetails = `
+                    <div class="visa-details">
+                        <strong style="font-size: 1.1rem;">🌍 Otras Visas</strong><br><br>
+                        <strong>Te ofrecemos asistencia para diferentes tipos de visa:</strong><br><br>
+                        <strong>🔹 Visa Americana:</strong> Proceso completo con capacitación previa<br>
+                        <strong>🔹 Visa Schengen:</strong> Acceso a 26 países europeos<br>
+                        <strong>🔹 Visa Canadiense:</strong> Asesoría completa con biométricos<br>
+                        <strong>🔹 Visa Mexicana:</strong> Tramitación ágil y eficiente<br><br>
+                        <strong>📞 Contáctanos para más información sobre visas para otros países.</strong><br>
+                        <strong>📍 Visítanos:</strong><br>
+                        <a href="https://share.google/9XSTdKfAE9iMxfAlv" target="_blank">
+                            https://share.google/9XSTdKfAE9iMxfAlv
+                        </a>
+                    </div>`;
+            }
+
+            return visaDetails;
+        }
+
+        function showDataConfirmation() {
+            conversationState = 'CONFIRMATION';
+            waitingForConfirmation = true;
+
+            // Crear resumen de datos
+            setTimeout(() => {
+                let summaryHTML = `<div class="data-summary">
+                    <strong>📋 RESUMEN DE TU SOLICITUD</strong><br><br>`;
+
+                if (selectedService === 'boletos') {
+                    summaryHTML += `
+                        <div class="data-item">
+                            <span class="data-label">Servicio:</span>
+                            <span class="data-value">Boletos Aéreos ✈️</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Origen:</span>
+                            <span class="data-value">${collectedData.origen || 'No especificado'}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Destino:</span>
+                            <span class="data-value">${collectedData.destino || 'No especificado'}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Fechas:</span>
+                            <span class="data-value">${collectedData.fechas || 'No especificado'}</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Personas:</span>
+                            <span class="data-value">${collectedData.personas || 'No especificado'}</span>
+                        </div>`;
+                } else if (selectedService === 'visas') {
+                    summaryHTML += `
+                        <div class="data-item">
+                            <span class="data-label">Servicio:</span>
+                            <span class="data-value">Visas 🛂</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Tipo:</span>
+                            <span class="data-value">${collectedData.tipo || 'No especificado'}</span>
+                        </div>`;
+                } else if (selectedService === 'seguros') {
+                    summaryHTML += `
+                        <div class="data-item">
+                            <span class="data-label">Servicio:</span>
+                            <span class="data-value">Seguros 🛡️</span>
+                        </div>
+                        <div class="data-item">
+                            <span class="data-label">Tipo:</span>
+                            <span class="data-value">${collectedData.tipo || 'No especificado'}</span>
+                        </div>`;
+                }
+
+                // Datos comunes
+                summaryHTML += `
+                    <div class="data-item">
+                        <span class="data-label">Nombre:</span>
+                        <span class="data-value">${collectedData.nombre || 'No especificado'}</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Contacto:</span>
+                        <span class="data-value">${collectedData.contacto || 'No especificado'}</span>
+                    </div>
+                    <div class="data-item">
+                        <span class="data-label">Pasaporte:</span>
+                        <span class="data-value">${collectedData.pasaporte || 'No especificado'}</span>
+                    </div>
+                    ${collectedData.fecha_viaje ? `
+                    <div class="data-item">
+                        <span class="data-label">Fecha viaje:</span>
+                        <span class="data-value">${collectedData.fecha_viaje}</span>
+                    </div>` : ''}
+                </div>
+                <br><strong>¿Están correctos tus datos?</strong><br>
+                Puedes responder: <strong>sí</strong> o <strong>no</strong>`;
+
+                addMessage(summaryHTML);
+
+                // Mostrar opciones de confirmación
+                const quickRepliesContainer = document.getElementById('quick-replies');
+                quickRepliesContainer.innerHTML = `
+                    <button class="quick-reply" onclick="handleConfirmationResponse('si')" style="background: var(--primary-color); color: white;">✅ Sí, están correctos</button>
+                    <button class="quick-reply" onclick="handleConfirmationResponse('no')" style="border-color: #dc3545; color: #dc3545;">❌ No, quiero modificar</button>
+                `;
+            }, 800);
+        }
+
+        function handleConfirmationResponse(response) {
+            if (typeof response === 'string') {
+                response = response.toLowerCase().trim();
+            }
+
+            // Mapear respuestas comunes
+            const positiveResponses = ['sí', 'si', 'yes', 'correcto', 'correcta', 'bien', 'ok', 'okay', 'de acuerdo', 'confirmo', 'confirmar', 'está bien', 'esta bien'];
+            const negativeResponses = ['no', 'nop', 'nope', 'incorrecto', 'incorrecta', 'mal', 'modificar', 'cambiar', 'corregir', 'editar', 'error'];
+
+            if (positiveResponses.some(r => response.includes(r))) {
+                confirmData(true);
+            } else if (negativeResponses.some(r => response.includes(r))) {
+                confirmData(false);
+            } else {
+                // Si no reconocemos la respuesta, pedir clarificación
+                addMessage(`No entendí tu respuesta. ¿Tus datos están correctos o quieres modificarlos?<br>Responde: <strong>sí</strong> (están correctos) o <strong>no</strong> (quiero modificar)`);
+
+                // Restaurar botones de confirmación
+                const quickRepliesContainer = document.getElementById('quick-replies');
+                quickRepliesContainer.innerHTML = `
+                    <button class="quick-reply" onclick="handleConfirmationResponse('si')" style="background: var(--primary-color); color: white;">✅ Sí, están correctos</button>
+                    <button class="quick-reply" onclick="handleConfirmationResponse('no')" style="border-color: #dc3545; color: #dc3545;">❌ No, quiero modificar</button>
+                `;
+                waitingForConfirmation = true;
+                return;
+            }
+        }
+
+        // ================= CONFIRMAR DATOS (MODIFICADA) =================
+        function confirmData(isConfirmed) {
+            waitingForConfirmation = false;
+
+            if (isConfirmed) {
+                conversationState = 'COMPLETE';
+
+                setTimeout(() => {
+                    // Mensaje base de confirmación
+                    addMessage(`✅ Perfecto, datos confirmados\n\nGracias por tu información.`);
+
+                    // Si es servicio de visas, mostrar detalles específicos
+                    if (selectedService === 'visas' && collectedData.tipo) {
+                        setTimeout(() => {
+                            const visaDetails = showVisaDetails(collectedData.tipo);
+                            if (visaDetails) {
+                                addMessage(visaDetails);
+                            }
+                        }, 500);
+                    }
+
+                    setTimeout(() => {
+                        addMessage(`Recibirás un mensaje de nuestro asesor para finalizar el proceso 📞\n\n¿Necesitas algo más?`);
+
+                        // Guardar en Google Sheets
+                        saveToGoogleSheets();
+
+                        // Opciones finales
+                        setTimeout(() => {
+                            showQuickReplies(['📞 Contactar asesor', '🔄 Nueva consulta', '✈️ Ver servicios']);
+                        }, 1000);
+                    }, selectedService === 'visas' ? 1500 : 500);
+
+                }, 800);
+            } else {
+                // Volver a recopilar datos
+                conversationState = 'DATA_COLLECTION';
+                dataCollectionPhase = 1;
+                collectedData = {};
+
+                setTimeout(() => {
+                    addMessage(`Entiendo, empecemos de nuevo.\n\n¿Qué servicio necesitas?\nOpciones: visas, boletos o seguros`);
+                }, 800);
+            }
+        }
+
+        // ================= GUARDAR EN GOOGLE SHEETS =================
+        async function saveToGoogleSheets() {
+            const data = {
+                servicio: selectedService,
+                fecha_registro: new Date().toLocaleDateString('es-ES'),
+                hora_registro: new Date().toLocaleTimeString('es-ES'),
+                ...collectedData,
+                origen: 'whatsapp_agent_strict',
+                estado: 'Pendiente contacto',
+                confirmado: 'Sí'
+            };
+
+            console.log('📤 Enviando datos confirmados:', data);
+
+            // Crear URL con parámetros GET
+            let url = GOOGLE_SCRIPT_URL + '?';
+            const params = [];
+
+            for (const [key, value] of Object.entries(data)) {
+                if (value) {
+                    params.push(encodeURIComponent(key) + '=' + encodeURIComponent(value));
+                }
+            }
+
+            url += params.join('&');
+
+            // Usar fetch en lugar de formulario
+            fetch(url, {
+                method: 'GET',
+                mode: 'no-cors' // Importante para evitar problemas CORS
+            })
+                .then(() => {
+                    console.log('✅ Datos enviados');
+                })
+                .catch(error => {
+                    console.error('❌ Error al enviar:', error);
+                });
+        }
+
+        // ================= MANEJO DE MENSAJES =================
+        function processUserMessage(userMessage) {
+            if (isProcessing) return;
+            isProcessing = true;
+
+            // Mostrar mensaje del usuario
+            addMessage(userMessage, true);
+
+            // Quitar respuestas rápidas
+            document.getElementById('quick-replies').innerHTML = '';
+
+            // Procesar según estado
+            switch (conversationState) {
+                case 'INITIAL':
+                    if (handleInitialGreeting(userMessage)) {
+                        processInitialGreeting();
+                    } else {
+                        setTimeout(() => {
+                            addMessage(`Por favor, comienza con un saludo\nEj: Hola, buenos días`);
+                        }, 800);
+                    }
+                    break;
+
+                case 'SERVICE_SELECTED':
+                    if (handleServiceSelection(userMessage)) {
+                        // Servicio seleccionado, ya procesado
+                    } else {
+                        setTimeout(() => {
+                            addMessage(`Selecciona un servicio:\nTe ofrezco: visas, boletos o seguros\n\nEscribe cuál te interesa:`);
+                        }, 800);
+                    }
+                    break;
+
+                case 'DATA_COLLECTION':
+                    showTypingIndicator();
+                    setTimeout(() => {
+                        removeTypingIndicator();
+
+                        if (selectedService === 'boletos') {
+                            processBoletosData(userMessage, dataCollectionPhase);
+                        } else {
+                            processOtherServiceData(userMessage, dataCollectionPhase);
+                        }
+                    }, 1000);
+                    break;
+
+                case 'CONFIRMATION':
+                    // El usuario puede escribir "sí" o "no" directamente
+                    handleConfirmationResponse(userMessage);
+                    break;
+
+                case 'COMPLETE':
+                    if (userMessage.includes('contactar') || userMessage.includes('📞') || userMessage.includes('asesor')) {
+                        // Abrir WhatsApp real
+                        const message = `✈️ VIAJA YA - CONSULTA AUTOMATIZADA%0A%0AServicio: ${selectedService}%0ANombre: ${collectedData.nombre || ''}%0AContacto: ${collectedData.contacto || ''}%0A%0A✅ Datos confirmados, necesito finalizar mi reserva`;
+                        window.open(`https://wa.me/${AGENCY_WHATSAPP_NUMBER}?text=${message}`, '_blank');
+                    } else if (userMessage.includes('nueva') || userMessage.includes('🔄') || userMessage.includes('otra')) {
+                        // Reiniciar
+                        resetConversation();
+                        setTimeout(() => {
+                            addMessage(`Perfecto, nueva consulta ✨\n\nTe ofrezco estos servicios: visas, boletos o seguros\n\nEscribe cuál te interesa:`);
+                        }, 800);
+                    } else if (userMessage.includes('servicio') || userMessage.includes('✈️') || userMessage.includes('ver')) {
+                        addMessage(`Te ofrezco:\n\n🛂 Visas - Para USA, Canadá, Europa\n✈️ Boletos - Aéreos nacionales e internacionales\n🛡️ Seguros - Viaje, estudios, familiar\n\nEscribe cuál te interesa:`);
+                        conversationState = 'SERVICE_SELECTED';
+                    }
+                    break;
+            }
+
+            isProcessing = false;
+        }
+
+        function resetConversation() {
+            conversationState = 'SERVICE_SELECTED';
+            selectedService = '';
+            collectedData = {};
+            dataCollectionPhase = 0;
+            waitingForConfirmation = false;
+            isCollectingContact = false;
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('user-input');
+            const message = input.value.trim();
+
+            if (message === '') return;
+
+            input.value = '';
+            processUserMessage(message);
+            input.focus();
+        }
+
+        // ================= EVENT LISTENERS =================
         document.addEventListener('DOMContentLoaded', function () {
-            // Cargar promociones
-            loadPromotions();
+            // Mensaje inicial automático (simula WhatsApp)
+            setTimeout(() => {
+                addMessage(`Viaja Ya Ecuador ✈️\nAgente automatizado conectado`);
+            }, 500);
 
-            // Inicializar date pickers
-            initializeDatePickers();
+            setTimeout(() => {
+                addMessage(`Por favor, escribe "Hola" para comenzar`);
+                conversationState = 'INITIAL';
+            }, 2500);
 
-            // Configurar evento del botón de envío
-            document.getElementById('send-button').addEventListener('click', sendToWhatsApp);
-
-            // Configurar cierre del modal
-            document.getElementById('close-modal').addEventListener('click', function () {
-                document.getElementById('confirmation-modal').style.display = 'none';
-            });
-
-            // Cerrar modal al hacer clic fuera
-            document.getElementById('confirmation-modal').addEventListener('click', function (e) {
-                if (e.target === this) {
-                    this.style.display = 'none';
+            // Enviar con Enter
+            const userInput = document.getElementById('user-input');
+            userInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    sendMessage();
                 }
             });
 
-            // Validación en tiempo real para WhatsApp
-            document.getElementById('whatsapp').addEventListener('blur', function () {
-                const whatsappRegex = /^\+?[1-9]\d{7,14}$/;
-                const value = this.value.replace(/\s/g, '');
+            // Botón enviar
+            document.getElementById('send-btn').addEventListener('click', sendMessage);
 
-                if (!whatsappRegex.test(value) && value !== "") {
-                    document.getElementById('whatsapp-error').style.display = 'block';
-                    this.classList.add('input-error');
-                } else {
-                    document.getElementById('whatsapp-error').style.display = 'none';
-                    this.classList.remove('input-error');
-                }
-            });
-
-            // Validación en tiempo real para fechas
-            document.getElementById('fecha-salida').addEventListener('change', function () {
-                const fechaRegreso = document.getElementById('fecha-regreso');
-                if (fechaRegreso.value && fechaRegreso.value <= this.value) {
-                    document.getElementById('fecha-regreso-error').style.display = 'block';
-                    fechaRegreso.classList.add('input-error');
-                } else {
-                    document.getElementById('fecha-regreso-error').style.display = 'none';
-                    fechaRegreso.classList.remove('input-error');
-                }
-            });
-
-            document.getElementById('fecha-regreso').addEventListener('change', function () {
-                const fechaSalida = document.getElementById('fecha-salida');
-                if (fechaSalida.value && this.value <= fechaSalida.value) {
-                    document.getElementById('fecha-regreso-error').style.display = 'block';
-                    this.classList.add('input-error');
-                } else {
-                    document.getElementById('fecha-regreso-error').style.display = 'none';
-                    this.classList.remove('input-error');
-                }
-            });
+            // Focus en input
+            userInput.focus();
         });
+
+        // Funciones globales para confirmación
+        window.handleConfirmationResponse = handleConfirmationResponse;
     </script>
 </body>
 
