@@ -516,32 +516,47 @@
             background: #e8f4ff;
             border: 2px solid #2d8cff;
             border-radius: var(--border-radius);
-            padding: 15px;
-            margin: 15px 0;
+            padding: 10px 14px;
+            margin: 8px 0;
             text-align: left;
             font-size: 0.9rem;
             color: #1a2b4c;
+            line-height: 1.3;
         }
 
+        /* RESET TOTAL INTERNO */
+        .visa-details * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Títulos */
         .visa-details strong {
-            color: #1a2b4c;
             display: block;
-            margin: 10px 0 5px;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
 
+        /* Texto */
+        .visa-details p {
+            margin-bottom: 4px;
+        }
+
+        /* Listas */
         .visa-details ul {
-            padding-left: 20px;
-            margin: 5px 0;
+            padding-left: 16px;
+            margin-top: 4px;
         }
 
         .visa-details li {
             margin-bottom: 3px;
         }
 
+        /* Links */
         .visa-details a {
             color: #2d8cff;
             text-decoration: underline;
-            word-break: break-all;
+            word-break: break-word;
         }
     </style>
 </head>
@@ -616,6 +631,7 @@
         // ================= VARIABLES DE ESTADO =================
         let conversationState = 'INITIAL'; // INITIAL, SERVICE_SELECTED, DATA_COLLECTION, CONFIRMATION, COMPLETE
         let selectedService = '';
+        let selectedVisaLabel = '';
         let collectedData = {};
         let dataCollectionPhase = 0;
         let isProcessing = false;
@@ -902,8 +918,8 @@
             dataCollectionPhase = 1;
 
             setTimeout(() => {
-                addMessage(`Visas de viaje 🛂\n\n¿Para qué país necesitas la visa?\nOpciones: USA, Canadá, Europa Schengen, otros`);
-                showQuickReplies(['USA', 'Canadá', 'Europa Schengen', 'Otro país']);
+                addMessage(`Tramite de visas 🛂\n\n¿Para qué país necesitas la visa?\nOpciones: Estados Unidos, Canadá, Europa Schengen, otros`);
+                showQuickReplies(['Estados Unidos', 'Canadá', 'Europa Schengen', 'Otro país']);
             }, 800);
         }
 
@@ -942,8 +958,12 @@
                     }
                     dataCollectionPhase = 2;
                     setTimeout(() => {
-                        addMessage(`Gracias ✈️\n\nAhora dime las fechas de viaje:\n• Fecha de ida\n• Fecha de regreso\n\nEjemplo: 15 marzo, 25 marzo`);
-                        showQuickReplies(['Este mes', 'Próximo mes', 'Fecha específica']);
+                        addMessage(`Gracias 🛂\n\nAhora indícanos tu disponibilidad aproximada para viajar.\nEsto nos permitirá brindarte una asesoría adecuada.`);
+                        showQuickReplies([
+                            'Quiero conocer tiempos estimados',
+                            'Deseo asesoría',
+                            'Evaluar mi perfil'
+                        ]);
                     }, 800);
                     break;
 
@@ -954,7 +974,11 @@
 
                         // Volver a mostrar las opciones rápidas
                         setTimeout(() => {
-                            showQuickReplies(['Este mes', 'Próximo mes', 'Fecha específica']);
+                            showQuickReplies([
+                                'Quiero conocer tiempos estimados',
+                                'Deseo asesoría',
+                                'Evaluar mi perfil'
+                            ]);
                         }, 500);
                         return;
                     }
@@ -1042,13 +1066,14 @@
             // Para visas y seguros, proceso simplificado
             switch (phase) {
                 case 1:
-                    // Primer dato específico del servicio
+                // Primer dato específico del servicio
+                case 1:
                     collectedData.tipo = userMessage;
+                    selectedVisaLabel = getVisaLabel(userMessage); // ← GUARDAMOS EL TEXTO FINAL
                     dataCollectionPhase = 2;
-                    setTimeout(() => {
-                        addMessage(`Gracias 📋\n\nAhora dime tu nombre completo`);
-                    }, 800);
+                    addMessage('Ahora dime tu nombre completo:');
                     break;
+
 
                 case 2:
                     // Nombre
@@ -1079,8 +1104,12 @@
                     collectedData.pasaporte = userMessage;
                     dataCollectionPhase = 5;
                     setTimeout(() => {
-                        addMessage(`Gracias ✅\n\n¿Fecha estimada del viaje? 📅\nOpciones: Este mes, Próximo mes, Por definir`);
-                        showQuickReplies(['Este mes', 'Próximo mes', 'Por definir']);
+                        addMessage(`Gracias 🛂\n\nAhora indícanos tu disponibilidad aproximada para viajar.\nEsto nos permitirá brindarte una asesoría adecuada.`);
+                        showQuickReplies([
+                            'Este Mes',
+                            'Este Año',
+                            'A Futuro',
+                        ]);
                     }, 800);
                     break;
 
@@ -1097,11 +1126,11 @@
             let visaDetails = '';
             const lowerVisaType = visaType.toLowerCase();
 
-            if (lowerVisaType.includes('usa') || lowerVisaType.includes('america') || lowerVisaType.includes('americano')) {
+            if (lowerVisaType.includes('estados unidos') || lowerVisaType.includes('america') || lowerVisaType.includes('americano')) {
                 visaDetails = `
                     <div class="visa-details">
-                        <strong style="font-size: 1.1rem;">🔹 Visa Americana</strong><br><br>
-                        <strong>Requisito principal:</strong> Pasaporte vigente<br><br>
+                        <strong style="font-size: 1.1rem;">🔹 Visa Americana</strong>
+                        <strong>Requisito principal:</strong> Pasaporte vigente
                         <strong>✅ INCLUYE:</strong>
                         <ul>
                             <li>Toma de fotografía</li>
@@ -1123,7 +1152,7 @@
             else if (lowerVisaType.includes('schengen') || lowerVisaType.includes('europa') || lowerVisaType.includes('europea')) {
                 visaDetails = `
                     <div class="visa-details">
-                        <strong style="font-size: 1.1rem;">🔹 Visa Schengen</strong><br>
+                        <strong style="font-size: 1.1rem;">🔹 Visa Schengen</strong>
                         <em>🌍✨ ¡Con tu visa Schengen de TURISMO, recorre Francia, España, Alemania y a 26 países de Europa sin fronteras! 🛫💼</em><br><br>
                         <strong>📋 REQUISITOS:</strong>
                         <ul>
@@ -1490,7 +1519,18 @@
                 case 'COMPLETE':
                     if (userMessage.includes('contactar') || userMessage.includes('📞') || userMessage.includes('asesor')) {
                         // Abrir WhatsApp real
-                        const message = `✈️ VIAJA YA - CONSULTA AUTOMATIZADA%0A%0AServicio: ${selectedService}%0ANombre: ${collectedData.nombre || ''}%0AContacto: ${collectedData.contacto || ''}%0A%0A✅ Datos confirmados, necesito finalizar mi reserva`;
+                        const serviceText =
+                            selectedService === 'visas'
+                                ? selectedVisaLabel
+                                : selectedService;
+
+                        const message =
+                            `VIAJA YA - ASESORIA PERSONALIZADA%0A%0A` +
+                            `Servicio: ${serviceText}%0A` +
+                            `Nombre: ${collectedData.nombre || ''}%0A` +
+                            `Contacto: ${collectedData.contacto || ''}%0A%0A` +
+                            `Datos confirmados, necesito finalizar mi reserva`;
+
                         window.open(`https://wa.me/${AGENCY_WHATSAPP_NUMBER}?text=${message}`, '_blank');
                     } else if (userMessage.includes('nueva') || userMessage.includes('🔄') || userMessage.includes('otra')) {
                         // Reiniciar
@@ -1528,11 +1568,30 @@
             input.focus();
         }
 
+        function getVisaLabel(tipo) {
+            const t = tipo.toLowerCase();
+
+            if (t.includes('estados unidos') || t.includes('usa'))
+                return 'Visa Americana ';
+
+            if (t.includes('canad'))
+                return 'Visa Canadiense ';
+
+            if (t.includes('schengen') || t.includes('europa'))
+                return 'Visa Schengen ';
+
+            if (t.includes('mexic'))
+                return 'Visa Mexicana ';
+
+            return `Visa para ${tipo}`;
+        }
+
+
         // ================= EVENT LISTENERS =================
         document.addEventListener('DOMContentLoaded', function () {
             // Mensaje inicial automático (simula WhatsApp)
             setTimeout(() => {
-                addMessage(`Viaja Ya Ecuador ✈️\nAgente automatizado conectado`);
+                addMessage(`Viaja Ya Ecuador \nAgente automatizado conectado`);
             }, 500);
 
             setTimeout(() => {
@@ -1558,6 +1617,7 @@
 
         // Funciones globales para confirmación
         window.handleConfirmationResponse = handleConfirmationResponse;
+
     </script>
 </body>
 
