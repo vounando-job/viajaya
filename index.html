@@ -562,10 +562,7 @@
 </head>
 
 <body>
-    <!-- WhatsApp Status Bar -->
-    <div class="status-bar">
-        <div class="container">VIAJA YA • AGENTE AUTOMATIZADO WHATSAPP</div>
-    </div>
+    
 
     <!-- Header -->
     <header>
@@ -575,8 +572,8 @@
                     class="logo1">
             </div>
             <div class="header-content">
-                <h1>Asistente Virtual WhatsApp</h1>
-                <p>Conectando con <span class="agent-badge"><i class="fas fa-robot"></i> Agente Automatizado</span></p>
+                <h1>Asesoría automatizada</h1>
+               
             </div>
         </div>
     </header>
@@ -584,8 +581,8 @@
     <!-- Chat Container -->
     <div class="container">
         <div class="info-banner">
-            <strong>⚠️ AGENTE AUTOMATIZADO</strong>
-            Este agente funciona SOLO con las políticas oficiales de WhatsApp Business
+            <strong>Bienvenido a Viaja Ya ✈️</strong>
+            Te ayudamos a gestionar tu proceso de viaje de manera rápida, clara y sin complicaciones
         </div>
 
         <div class="whatsapp-chat">
@@ -619,7 +616,8 @@
         <!-- Status Indicator -->
         <div class="status-indicator">
             <div class="status-dot"></div>
-            <span>Agente conectado - Cumpliendo políticas WhatsApp Business</span>
+            <span>Dirección: Almagro Plaza P.5 Of. 513 - Correo: info@viajaya.ec</span>
+            
         </div>
     </div>
 
@@ -918,8 +916,8 @@
             dataCollectionPhase = 1;
 
             setTimeout(() => {
-                addMessage(`Tramite de visas 🛂\n\n¿Para qué país necesitas la visa?\nOpciones: Estados Unidos, Canadá, Europa Schengen, otros`);
-                showQuickReplies(['Estados Unidos', 'Canadá', 'Europa Schengen', 'Otro país']);
+                addMessage(`Tramite de visas 🛂\n\n¿Para qué país necesitas la visa?\nOpciones: Estados Unidos, Canadá, Europa Schengen, Mexico.`);
+                showQuickReplies(['Estados Unidos', 'Canadá', 'Europa Schengen', 'Mexico. ']);
             }, 800);
         }
 
@@ -995,7 +993,7 @@
                     collectedData.personas = userMessage;
                     dataCollectionPhase = 4;
                     setTimeout(() => {
-                        addMessage(`Gracias 👥\n\nAhora necesito:\n• Nombre completo del titular\n• Número de contacto\n\nPuedes escribir ambos juntos o separados`);
+                        addMessage(`Gracias 👥\n\nAhora necesito:\n• Nombre y apellido del titular\n• Número de contacto\n\nPuedes escribir ambos juntos o separados`);
                     }, 800);
                     break;
 
@@ -1071,7 +1069,7 @@
                     collectedData.tipo = userMessage;
                     selectedVisaLabel = getVisaLabel(userMessage); // ← GUARDAMOS EL TEXTO FINAL
                     dataCollectionPhase = 2;
-                    addMessage('Ahora dime tu nombre completo:');
+                    addMessage('Ahora dime tu nombre y apellido:');
                     break;
 
 
@@ -1539,7 +1537,7 @@
                             addMessage(`Perfecto, nueva consulta ✨\n\nTe ofrezco estos servicios: visas, boletos o seguros\n\nEscribe cuál te interesa:`);
                         }, 800);
                     } else if (userMessage.includes('servicio') || userMessage.includes('✈️') || userMessage.includes('ver')) {
-                        addMessage(`Te ofrezco:\n\n🛂 Visas - Para USA, Canadá, Europa\n✈️ Boletos - Aéreos nacionales e internacionales\n🛡️ Seguros - Viaje, estudios, familiar\n\nEscribe cuál te interesa:`);
+                        addMessage(`Te ofrecemos:\n\n🛂 Visas - Para Estados Unidos, Canadá, Europa\n✈️ Boletos - Aéreos nacionales e internacionales\n🛡️ Seguros - Viaje, estudios, familiar\n\nEscribe cuál te interesa:`);
                         conversationState = 'SERVICE_SELECTED';
                     }
                     break;
